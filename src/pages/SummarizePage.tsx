@@ -16,20 +16,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Layout } from '@/components/layout/Layout';
 import { useStudyStore } from '@/stores/studyStore';
 import { useToast } from '@/hooks/use-toast';
-
-// Mock AI summarization (would be replaced with actual AI call)
-const generateSummary = async (text: string): Promise<{ short: string; detailed: string }> => {
-  await new Promise(resolve => setTimeout(resolve, 1500));
-  
-  const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0);
-  const shortSummary = sentences.slice(0, 3).join('. ') + '.';
-  const detailedSummary = sentences.slice(0, 8).join('. ') + '.';
-  
-  return {
-    short: shortSummary || 'This text discusses key concepts and ideas that are important for understanding the topic at hand.',
-    detailed: detailedSummary || 'The provided text covers several important aspects of the subject matter. It begins by introducing fundamental concepts and gradually builds upon them. Key points include the main arguments presented, supporting evidence, and conclusions drawn. Understanding these elements is crucial for mastering the material.',
-  };
-};
+import { generateSummary } from '@/lib/ai';
 
 export default function SummarizePage() {
   const [inputText, setInputText] = useState('');

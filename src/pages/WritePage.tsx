@@ -24,10 +24,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useStudyStore } from '@/stores/studyStore';
 import { useToast } from '@/hooks/use-toast';
+import { generateOutline, generateCitations, checkGrammar } from '@/lib/ai';
 
-// Mock AI writing assistance
-const generateOutline = async (topic: string): Promise<string> => {
-  await new Promise(resolve => setTimeout(resolve, 1500));
+const mockOutlineResponse = async (topic: string): Promise<string> => {
   
   return `# ${topic}
 

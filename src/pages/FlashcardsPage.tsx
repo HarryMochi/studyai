@@ -25,21 +25,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
-
-// Mock AI flashcard generation
-const generateFlashcards = async (topic: string): Promise<Flashcard[]> => {
-  await new Promise(resolve => setTimeout(resolve, 1500));
-  
-  const sampleCards: Flashcard[] = [
-    { id: '1', question: `What is the main concept of ${topic}?`, answer: `${topic} is a fundamental concept that encompasses various principles and applications in its field.`, known: false },
-    { id: '2', question: `Why is ${topic} important?`, answer: `${topic} is crucial because it forms the foundation for understanding more complex ideas and has practical applications.`, known: false },
-    { id: '3', question: `What are the key components of ${topic}?`, answer: `The key components include core principles, supporting elements, and interconnected systems that work together.`, known: false },
-    { id: '4', question: `How does ${topic} relate to other concepts?`, answer: `${topic} connects to various other concepts through shared principles and complementary functions.`, known: false },
-    { id: '5', question: `What are common applications of ${topic}?`, answer: `Common applications include practical implementations in real-world scenarios, research, and development.`, known: false },
-  ];
-  
-  return sampleCards;
-};
+import { generateFlashcards } from '@/lib/ai';
 
 interface FlashcardComponentProps {
   card: Flashcard;

@@ -20,70 +20,7 @@ import { Progress } from '@/components/ui/progress';
 import { useStudyStore, QuizQuestion, QuizResult } from '@/stores/studyStore';
 import { useToast } from '@/hooks/use-toast';
 import confetti from 'canvas-confetti';
-
-// Mock AI quiz generation
-const generateQuiz = async (topic: string): Promise<QuizQuestion[]> => {
-  await new Promise(resolve => setTimeout(resolve, 1500));
-  
-  return [
-    {
-      id: '1',
-      question: `What is the primary characteristic of ${topic}?`,
-      options: ['Option A: Fundamental principle', 'Option B: Secondary feature', 'Option C: Tertiary aspect', 'Option D: Unrelated concept'],
-      correctAnswer: 0,
-      explanation: `The fundamental principle is the primary characteristic because it forms the core foundation of ${topic}.`,
-    },
-    {
-      id: '2',
-      question: `Which of the following best describes ${topic}?`,
-      options: ['A complex system', 'A simple mechanism', 'An abstract concept', 'A physical entity'],
-      correctAnswer: 0,
-      explanation: `${topic} is best described as a complex system due to its interconnected components.`,
-    },
-    {
-      id: '3',
-      question: `When was ${topic} first introduced?`,
-      options: ['19th century', '20th century', 'Ancient times', 'Recently'],
-      correctAnswer: 1,
-      explanation: `${topic} emerged in the 20th century as part of modern developments in the field.`,
-    },
-    {
-      id: '4',
-      question: `What is NOT a benefit of understanding ${topic}?`,
-      options: ['Better comprehension', 'Improved skills', 'Enhanced confusion', 'Greater insight'],
-      correctAnswer: 2,
-      explanation: 'Enhanced confusion is not a benefit - understanding reduces confusion.',
-    },
-    {
-      id: '5',
-      question: `Who are the main contributors to ${topic}?`,
-      options: ['Scientists', 'Artists', 'Politicians', 'Athletes'],
-      correctAnswer: 0,
-      explanation: 'Scientists have been the primary contributors to developing this field.',
-    },
-    {
-      id: '6',
-      question: `How does ${topic} impact daily life?`,
-      options: ['Through technology', 'No impact', 'Only in labs', 'Rarely'],
-      correctAnswer: 0,
-      explanation: `${topic} impacts daily life through various technological applications.`,
-    },
-    {
-      id: '7',
-      question: `What is required to master ${topic}?`,
-      options: ['Practice and study', 'Natural talent only', 'No effort', 'Luck'],
-      correctAnswer: 0,
-      explanation: 'Mastering any topic requires consistent practice and dedicated study.',
-    },
-    {
-      id: '8',
-      question: `Which field is ${topic} most closely related to?`,
-      options: ['Science', 'Art', 'Music', 'Sports'],
-      correctAnswer: 0,
-      explanation: `${topic} is primarily related to scientific disciplines.`,
-    },
-  ];
-};
+import { generateQuiz } from '@/lib/ai';
 
 type QuizMode = 'practice' | 'timed';
 type QuizState = 'setup' | 'playing' | 'results';
